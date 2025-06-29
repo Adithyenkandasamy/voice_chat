@@ -69,7 +69,7 @@ if __name__ == "__main__":
         print("Press Ctrl+C to stop")
         
         while True:
-            input("\nPress Enter to start recording...")
+            # input("\nPress Enter to start recording...")
             process_audio()
             
     except KeyboardInterrupt:
