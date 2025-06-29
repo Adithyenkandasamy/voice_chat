@@ -9,7 +9,7 @@ def say(text):
     }
     payload = {
         "input": text,
-        "voice": "af_alloy"  # Use the voice that your server actually loaded
+        "voice": "af_nova"  # Use the voice that your server actually loaded
     }
 
     response = requests.post(url, json=payload, headers=headers)
