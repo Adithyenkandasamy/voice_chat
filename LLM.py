@@ -7,7 +7,7 @@ def ask_ollama(prompt, model="mistral"):
         "model": model,
         "prompt": prompt+"""You are a voice assistant named Jarvis. Speak clearly and briefly.
         Use simple, correct language. Limit replies to under 20 words. No small talk or extra details.""",
-        "stream": True
+        "stream": False
     }
 
     response = requests.post(url, headers=headers, json=data)
