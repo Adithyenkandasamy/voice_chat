@@ -3,7 +3,7 @@ import os
 import tempfile
 
 def say(text):
-    url = "https://1309-34-16-220-83.ngrok-free.app//speak"
+    url = "https://d61d-34-90-108-169.ngrok-free.app/speak"
     
     payload = {
         "text": text
