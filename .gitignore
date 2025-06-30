@@ -3,3 +3,4 @@ env
 .env
 __pycache__/STT.cpython-312.pyc
 .gitignore
+__pycache__
