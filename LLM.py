@@ -1,41 +1,18 @@
-from openai import OpenAI
-from dotenv import load_dotenv
-import os
+import requests
 
-load_dotenv()
+def ask_ollama(prompt, model="mistral"):
+    url = "http://localhost:11434/api/generate"
+    headers = {"Content-Type": "application/json"}
+    data = {
+        "model": model,
+        "prompt": prompt+"""You are a voice assistant named Jarvis. Speak clearly and briefly.
+        Use simple, correct language. Limit replies to under 20 words. No small talk or extra details.""",
+        "stream": True
+    }
 
-def LLM(prompt):
-    client = OpenAI(
-        base_url="https://openrouter.ai/api/v1",
-        api_key=os.getenv("OPENAI_API_KEY"),
-    )
+    response = requests.post(url, headers=headers, json=data)
+    response.raise_for_status()
+    return response.json()["response"]
 
-    completion = client.chat.completions.create(
-        extra_headers={
-            "HTTP-Referer": "NULL",
-            "X-Title": "NULL",
-        },
-        model="deepseek/deepseek-r1:free",
-        messages=[
-            {
-                "role": "system",
-                "content": (
-                    "You are a smart and casual voice assistant. "
-                    "Speak like a human — respond in 1–2 short sentences. "
-                    "Keep it simple, natural, and friendly like real conversation. "
-                    "If the user says 'hi', just say 'Hi!' or 'Hello!' — "
-                    "don't explain anything unless asked directly."
-                )
-            },
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ]
-    )
-
-    response = completion.choices[0].message.content
-    return response.replace("\n", " ").strip()
-
-if __name__ == "__main__":
-    print(LLM("Hi"))
+# Example usage
+# ask_ollama("What's the capital of France?")
