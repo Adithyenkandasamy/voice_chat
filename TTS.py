@@ -23,4 +23,7 @@ def say(text):
         print("❌ TTS request failed:", response.status_code, response.text)
 
 # Run test
-say("Hello! I hope you're having a great day. Please let me know if there's anything I can do to assist you with your questions, tasks, or daily goals.")
+# say("Hello! I hope you're having a great day. Please let me know if there's anything I can do to assist you with your questions, tasks, or daily goals.")
+
+
+
